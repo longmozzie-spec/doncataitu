@@ -1,0 +1,6 @@
+media/video/
+*.log
+audio/README.txt
+media/README.txt
+.DS_Store
+Thumbs.db

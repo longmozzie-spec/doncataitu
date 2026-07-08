@@ -1,0 +1,795 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Đờn ca tài tử — Vì sao thứ âm nhạc này chỉ có thể sinh ra ở miền Tây</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500;1,600&family=Playfair+Display:ital,wght@0,600;0,700;0,800;1,500;1,700&family=Be+Vietnam+Pro:wght@300;400;500;600;700&family=Lora:ital,wght@0,400;0,500;1,400;1,500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#1c130a;
+    --ink2:#3a2a17;
+    --body:#43331f;
+    --paper:#f3e8cf;
+    --paper2:#ecdcbb;
+    --paper3:#e3cfa4;
+    --line:#d6bd8c;
+    --lac:#7d1d11;
+    --lac-br:#9d2f1c;
+    --lac-dk:#5c1409;
+    --gold:#9c7620;
+    --gold-lt:#c39b45;
+    --gold-pale:#e0c374;
+    --jade:#2e4536;
+    --serif:'Playfair Display',serif;
+    --antique:'Cormorant Garamond',Georgia,serif;
+    --read:'Lora',Georgia,serif;
+    --sans:'Be Vietnam Pro',sans-serif;
+    --wrap:720px;
+    --wide:1080px;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{font-family:var(--read);background:var(--paper);color:var(--body);
+    font-size:19px;line-height:1.85;-webkit-font-smoothing:antialiased;position:relative}
+  body::before{content:'';position:fixed;inset:0;z-index:1;pointer-events:none;opacity:.35;
+    mix-blend-mode:multiply;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.82' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.3'/%3E%3C/svg%3E")}
+  ::selection{background:var(--lac);color:var(--paper)}
+  img{max-width:100%;display:block}
+  header,section,footer,.divider{position:relative;z-index:2}
+
+  .progress{position:fixed;top:0;left:0;height:4px;width:0;z-index:200;
+    background:linear-gradient(90deg,var(--gold-lt),var(--lac-br),var(--gold));
+    box-shadow:0 0 8px rgba(156,118,32,.5)}
+
+  /* ---------- layout rails ---------- */
+  .wrap{max-width:var(--wrap);margin:0 auto;padding:0 24px}
+  .wide{max-width:var(--wide);margin:0 auto;padding:0 24px}
+
+  /* ---------- ornamental divider (đồng tiền cổ + hoa văn) ---------- */
+  .divider{display:flex;align-items:center;justify-content:center;gap:1rem;
+    padding:2.2rem 24px;max-width:var(--wide);margin:0 auto}
+  .divider .rule{flex:1;height:2px;max-width:280px;
+    background:linear-gradient(90deg,transparent,var(--gold) 60%,var(--gold-lt))}
+  .divider .rule.r{background:linear-gradient(270deg,transparent,var(--gold) 60%,var(--gold-lt))}
+  .divider .coin{width:46px;height:46px;flex:none;color:var(--lac);opacity:.95}
+  .divider.dark .rule{background:linear-gradient(90deg,transparent,var(--gold-lt) 60%,var(--gold-pale))}
+  .divider.dark .rule.r{background:linear-gradient(270deg,transparent,var(--gold-lt) 60%,var(--gold-pale))}
+  .divider.dark .coin{color:var(--gold-lt)}
+
+  /* ---------- meander band (hoa văn viền) ---------- */
+  .meander{height:16px;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='48' height='16' viewBox='0 0 48 16'%3E%3Cg fill='none' stroke='%23c39b45' stroke-width='1.4'%3E%3Cpath d='M0 8h6V3h9v10h9V3h9v10h6'/%3E%3C/g%3E%3C/svg%3E");
+    background-repeat:repeat-x;background-position:center;opacity:.8}
+
+  /* ---------- HERO ---------- */
+  .hero{position:relative;min-height:94vh;display:flex;align-items:flex-end;
+    background:var(--ink);overflow:hidden}
+  .hero .media{position:absolute;inset:0;z-index:0}
+  .hero .media img{width:100%;height:100%;object-fit:cover;opacity:.5}
+  .hero .media .ph{width:100%;height:100%;
+    background:
+      radial-gradient(70% 55% at 50% 24%,rgba(195,155,69,.26),transparent 68%),
+      radial-gradient(90% 70% at 50% 100%,rgba(125,29,17,.42),transparent 72%),
+      linear-gradient(160deg,#2b1c10,#1a1109 55%,#0e0805)}
+  .hero .watermark{position:absolute;z-index:0;inset:0;pointer-events:none;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='420' height='420' viewBox='0 0 420 420'%3E%3Cg fill='none' stroke='%23c39b45' stroke-width='2'%3E%3Ccircle cx='210' cy='210' r='150'/%3E%3Ccircle cx='210' cy='210' r='120'/%3E%3Crect x='168' y='168' width='84' height='84'/%3E%3C/g%3E%3C/svg%3E");
+    background-repeat:no-repeat;background-position:center 30%;background-size:min(70vh,540px);opacity:.06}
+  .hero .grad{position:absolute;inset:0;z-index:1;
+    background:linear-gradient(to top,rgba(14,8,5,.97) 0%,rgba(14,8,5,.45) 48%,rgba(14,8,5,.6) 100%)}
+  .hero .frame-lines{position:absolute;inset:18px;z-index:1;pointer-events:none;
+    border:1px solid rgba(195,155,69,.4);box-shadow:inset 0 0 0 4px rgba(195,155,69,.12)}
+  .hero-inner{position:relative;z-index:2;padding-bottom:8vh;width:100%}
+  .hero .ey{font-family:var(--sans);font-weight:600;letter-spacing:.34em;
+    text-transform:uppercase;font-size:.72rem;color:var(--gold-pale);margin-bottom:1.2rem}
+  .hero .ornabreak{width:120px;height:14px;margin-bottom:1.6rem;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='14' viewBox='0 0 120 14'%3E%3Cg fill='none' stroke='%23c39b45' stroke-width='1.4'%3E%3Cpath d='M0 7h44'/%3E%3Cpath d='M120 7H76'/%3E%3Cpath d='M60 1l6 6-6 6-6-6z'/%3E%3C/g%3E%3C/svg%3E");
+    background-repeat:no-repeat;background-position:left center}
+  .hero h1{font-family:var(--serif);font-weight:800;color:var(--paper);
+    font-size:clamp(2.5rem,6.2vw,4.8rem);line-height:1.18;letter-spacing:-.01em;
+    max-width:16ch;text-shadow:0 2px 34px rgba(0,0,0,.55)}
+  .hero h1 em{font-style:italic;color:var(--gold-pale)}
+  .hero .dek{font-family:var(--antique);font-style:italic;font-weight:500;
+    font-size:clamp(1.25rem,2.5vw,1.65rem);line-height:1.5;color:rgba(243,232,207,.85);
+    max-width:46ch;margin-top:1.6rem}
+  .hero .by{margin-top:2.2rem;font-family:var(--sans);font-size:.76rem;
+    letter-spacing:.14em;color:rgba(195,155,69,.85);text-transform:uppercase}
+  .hero .seal{position:absolute;right:28px;bottom:34px;z-index:2;width:96px;height:96px;
+    opacity:.92;filter:drop-shadow(0 4px 14px rgba(0,0,0,.5))}
+
+  /* ---------- reading blocks ---------- */
+  .section{padding:clamp(3rem,7vh,5rem) 0}
+  .section.tight{padding-top:.5rem}
+  p{margin:0 0 1.5rem;max-width:100%}
+  .lede{font-family:var(--antique);font-size:clamp(1.4rem,2.7vw,1.85rem);
+    line-height:1.5;color:var(--ink2);font-weight:600}
+  .drop::first-letter{-webkit-initial-letter:3;font-family:var(--serif);
+    font-weight:800;color:var(--paper);margin-right:.55rem;float:left;
+    font-size:3.6em;line-height:.72;padding:.12em .18em 0;margin-top:.04em;
+    background:linear-gradient(160deg,var(--lac-br),var(--lac-dk));
+    box-shadow:0 3px 10px rgba(92,20,9,.3);border:1px solid var(--gold-lt)}
+  strong{font-weight:600;color:var(--ink)}
+  em{font-style:italic}
+  a.ref{color:var(--lac);text-decoration:none;border-bottom:1px solid var(--line)}
+
+  h2{font-family:var(--serif);font-weight:800;color:var(--ink);
+    font-size:clamp(1.75rem,3.9vw,2.75rem);line-height:1.14;letter-spacing:-.01em;
+    margin:0 0 1.3rem}
+  h2 em{color:var(--lac);font-style:italic}
+  .kicker{font-family:var(--sans);font-weight:700;letter-spacing:.24em;
+    text-transform:uppercase;font-size:.72rem;color:var(--lac);
+    display:flex;align-items:center;gap:.85rem;margin-bottom:1.1rem}
+  .kicker::before{content:'';width:34px;height:2px;
+    background:linear-gradient(90deg,var(--lac),var(--gold-lt))}
+  .kicker::after{content:'';width:7px;height:7px;transform:rotate(45deg);
+    background:var(--gold);flex:none}
+  .num{font-family:var(--serif);font-weight:800;color:var(--gold);
+    font-size:1.05rem;font-style:italic}
+
+  /* ---------- pull quote ---------- */
+  .pull{position:relative;margin:2.6rem 0;padding:1.6rem 1.8rem 1.6rem 2rem;
+    background:linear-gradient(180deg,var(--paper2),var(--paper));
+    border-left:4px solid var(--lac);
+    box-shadow:0 1px 0 var(--line),0 14px 30px rgba(28,19,10,.07)}
+  .pull::before{content:'\201C';position:absolute;left:.6rem;top:-.6rem;
+    font-family:var(--serif);font-size:3.4rem;color:var(--gold-lt);opacity:.55;line-height:1}
+  .pull p{font-family:var(--serif);font-style:italic;font-weight:500;
+    font-size:clamp(1.4rem,3vw,1.85rem);line-height:1.38;color:var(--ink);margin:0}
+  .pull cite{display:block;margin-top:.8rem;font-family:var(--sans);font-style:normal;
+    font-size:.76rem;letter-spacing:.14em;text-transform:uppercase;color:var(--jade)}
+
+  /* ---------- figure / media slots ---------- */
+  figure{margin:2.8rem 0}
+  figure.full{max-width:var(--wide)}
+  .frame{position:relative;background:var(--paper2);
+    border:1px solid var(--gold);
+    box-shadow:0 0 0 1px var(--paper),0 0 0 5px var(--paper2),0 0 0 6px var(--line),
+      0 20px 40px rgba(28,19,10,.13);
+    aspect-ratio:16/9;overflow:hidden;display:flex;align-items:center;justify-content:center}
+  .frame::before,.frame::after{content:'';position:absolute;width:22px;height:22px;z-index:3;
+    border:2px solid var(--gold-lt)}
+  .frame::before{top:7px;left:7px;border-right:none;border-bottom:none}
+  .frame::after{bottom:7px;right:7px;border-left:none;border-top:none}
+  .frame.tall{aspect-ratio:4/5}
+  .frame img{width:100%;height:100%;object-fit:cover}
+  .slot{position:absolute;inset:0;display:flex;flex-direction:column;
+    align-items:center;justify-content:center;gap:.7rem;text-align:center;
+    color:var(--jade);padding:1.6rem}
+  .slot .ico{width:46px;height:46px;opacity:.6;color:var(--lac)}
+  .slot .t{font-family:var(--sans);font-weight:600;font-size:.82rem;letter-spacing:.12em;
+    text-transform:uppercase;color:var(--ink2)}
+  .slot .s{font-family:var(--antique);font-style:italic;font-size:1.08rem;color:#8a7a5f;max-width:38ch}
+  figcaption{font-family:var(--sans);font-size:.82rem;color:var(--jade);
+    margin-top:1rem;padding-left:.1rem;line-height:1.5}
+  figcaption b{color:var(--lac);font-weight:600}
+
+  /* video slot special */
+  .videoslot .frame{background:#160f07;border-color:var(--gold)}
+  .videoslot .slot{color:var(--gold-pale)}
+  .videoslot .slot .t{color:var(--gold-pale)}
+  .videoslot .slot .s{color:rgba(224,195,116,.7)}
+  .play-btn{width:70px;height:70px;border-radius:50%;border:1.5px solid var(--gold-lt);
+    display:flex;align-items:center;justify-content:center;font-size:1.35rem;color:var(--gold-lt);
+    background:radial-gradient(circle,rgba(195,155,69,.16),rgba(125,29,17,.1))}
+
+  /* ---------- instruments strip ---------- */
+  .instruments{position:relative;color:var(--paper);padding:clamp(3.5rem,8vh,6rem) 0;
+    background:
+      radial-gradient(120% 80% at 50% 0%,rgba(125,29,17,.4),transparent 60%),
+      linear-gradient(160deg,#1c130a,#241109 60%,#150c05)}
+  .instruments::before,.instruments::after{content:'';position:absolute;left:0;right:0;height:16px;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='48' height='16' viewBox='0 0 48 16'%3E%3Cg fill='none' stroke='%23c39b45' stroke-width='1.4'%3E%3Cpath d='M0 8h6V3h9v10h9V3h9v10h6'/%3E%3C/g%3E%3C/svg%3E");
+    background-repeat:repeat-x;background-position:center;opacity:.7}
+  .instruments::before{top:0}
+  .instruments::after{bottom:0}
+  .instruments h2{color:var(--paper)}
+  .instruments h2 em{color:var(--gold-pale)}
+  .instruments .kicker{color:var(--gold-pale)}
+  .instruments .kicker::before{background:linear-gradient(90deg,var(--gold-pale),var(--lac-br))}
+  .instruments .num{color:var(--gold-pale)}
+  .instruments .intro{font-family:var(--antique);font-style:italic;font-size:1.2rem;
+    color:rgba(243,232,207,.82);max-width:62ch;margin-bottom:.5rem}
+  .igrid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;
+    background:rgba(195,155,69,.32);border:1px solid rgba(195,155,69,.4);margin-top:2.5rem;
+    box-shadow:0 20px 46px rgba(0,0,0,.4)}
+  .icard{background:#1c130a;padding:1.9rem 1.4rem;transition:background .4s}
+  .icard .draw{height:96px;display:flex;align-items:flex-end;justify-content:center;margin-bottom:1.2rem}
+  .icard h3{font-family:var(--serif);font-weight:700;font-size:1.45rem;color:var(--gold-pale);margin-bottom:.15rem}
+  .icard .role{font-family:var(--sans);font-size:.66rem;letter-spacing:.18em;text-transform:uppercase;
+    color:#a08b6a;margin-bottom:.85rem}
+  .icard p{font-family:var(--read);font-size:.98rem;line-height:1.62;color:rgba(243,232,207,.74);margin:0}
+  .icard .strings line{transition:stroke .3s}
+  .icard:hover .strings line{stroke:var(--lac-br)}
+
+  /* ---------- four modes (thẻ bài bốn mùa) ---------- */
+  .modes{display:grid;grid-template-columns:repeat(4,1fr);gap:1.1rem;margin:2.6rem 0 1rem}
+  .mcard{position:relative;padding:1.7rem 1.4rem;border:1px solid var(--line);
+    background:linear-gradient(180deg,var(--paper2),var(--paper));
+    border-top:4px solid var(--gold);transition:transform .4s,box-shadow .4s;
+    box-shadow:0 6px 18px rgba(28,19,10,.08)}
+  .mcard::after{content:'';position:absolute;inset:5px;border:1px solid var(--line);pointer-events:none}
+  .mcard:hover{transform:translateY(-6px);box-shadow:0 20px 40px rgba(28,19,10,.15)}
+  .mcard.b{border-top-color:var(--gold-lt)}
+  .mcard.h{border-top-color:var(--lac-br)}
+  .mcard.n{border-top-color:var(--jade)}
+  .mcard.o{border-top-color:var(--ink)}
+  .mcard .season{font-family:var(--sans);font-size:.66rem;letter-spacing:.2em;
+    text-transform:uppercase;color:var(--jade);margin-bottom:.5rem}
+  .mcard h4{font-family:var(--serif);font-weight:700;font-size:1.35rem;color:var(--ink);margin-bottom:.3rem}
+  .mcard .cnt{font-family:var(--antique);font-style:italic;color:var(--lac);font-size:1.05rem;margin-bottom:.7rem}
+  .mcard p{font-family:var(--read);font-size:.92rem;line-height:1.58;color:var(--body);margin:0}
+
+  /* ---------- stat row ---------- */
+  .statrow{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;
+    background:var(--gold);border:2px solid var(--gold);margin:2.6rem 0;
+    box-shadow:0 14px 32px rgba(28,19,10,.12)}
+  .statc{background:linear-gradient(180deg,var(--paper),var(--paper2));padding:2.1rem 1.2rem;text-align:center}
+  .statc .n{font-family:var(--serif);font-weight:800;font-size:clamp(2.2rem,4.5vw,3rem);
+    color:var(--lac);line-height:1}
+  .statc .l{font-family:var(--sans);font-size:.76rem;color:var(--jade);margin-top:.7rem;line-height:1.45}
+
+  /* ---------- timeline ---------- */
+  .tl{margin:2.6rem 0 0;position:relative;padding-left:1.8rem;
+    border-left:2px solid var(--gold)}
+  .tlrow{position:relative;padding:0 0 2.3rem 1.5rem}
+  .tlrow::before{content:'';position:absolute;left:-2.42rem;top:.35rem;width:15px;height:15px;
+    border-radius:50%;background:var(--paper);border:2px solid var(--lac);
+    box-shadow:0 0 0 3px var(--paper),0 0 0 4px var(--gold-lt)}
+  .tlrow .yr{font-family:var(--serif);font-weight:800;font-size:1.3rem;color:var(--lac)}
+  .tlrow h4{font-family:var(--sans);font-weight:600;font-size:1rem;color:var(--ink);margin:.15rem 0 .4rem}
+  .tlrow p{font-family:var(--read);font-size:.98rem;line-height:1.62;color:var(--body);margin:0;max-width:56ch}
+
+  /* ---------- closing ---------- */
+  .closing{position:relative;color:var(--paper);text-align:center;
+    padding:clamp(4rem,10vh,7rem) 0;
+    background:
+      radial-gradient(90% 70% at 50% 0%,rgba(125,29,17,.5),transparent 60%),
+      linear-gradient(180deg,#1c130a,#2b1109)}
+  .closing::before{content:'';position:absolute;top:0;left:0;right:0;height:16px;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='48' height='16' viewBox='0 0 48 16'%3E%3Cg fill='none' stroke='%23c39b45' stroke-width='1.4'%3E%3Cpath d='M0 8h6V3h9v10h9V3h9v10h6'/%3E%3C/g%3E%3C/svg%3E");
+    background-repeat:repeat-x;background-position:center;opacity:.7}
+  .closing .coin-top{width:52px;height:52px;margin:0 auto 1.6rem;color:var(--gold-lt);opacity:.9}
+  .closing h2{color:var(--paper);max-width:20ch;margin:0 auto 1.3rem}
+  .closing h2 em{color:var(--gold-pale)}
+  .closing p{font-family:var(--antique);font-style:italic;font-size:1.25rem;
+    color:rgba(243,232,207,.85);max-width:54ch;margin:0 auto 2rem}
+  .cta{display:inline-flex;gap:1rem;flex-wrap:wrap;justify-content:center}
+  .btn{font-family:var(--sans);font-weight:600;font-size:.85rem;padding:.98rem 2.1rem;
+    border:1px solid var(--gold-lt);color:var(--gold-lt);background:transparent;
+    cursor:pointer;transition:.35s;letter-spacing:.05em}
+  .btn.solid{background:linear-gradient(180deg,var(--lac-br),var(--lac));border-color:var(--gold-lt);color:var(--paper)}
+  .btn:hover{background:var(--gold-lt);color:var(--ink);border-color:var(--gold-lt)}
+  .btn.solid:hover{background:linear-gradient(180deg,var(--lac),var(--lac-dk));border-color:var(--gold-pale);color:var(--gold-pale)}
+
+  footer{position:relative;background:#0e0805;color:rgba(243,232,207,.5);padding:2.6rem 0;
+    font-family:var(--sans);font-size:.76rem}
+  footer .wide{display:flex;justify-content:space-between;flex-wrap:wrap;gap:1rem;align-items:center}
+  footer .seal-sm{width:40px;height:40px;color:var(--lac-br);opacity:.85;flex:none}
+
+  .reveal{opacity:0;transform:translateY(30px);
+    transition:opacity .9s cubic-bezier(.2,.7,.2,1),transform .9s cubic-bezier(.2,.7,.2,1)}
+  .reveal.in{opacity:1;transform:none}
+
+  @media(max-width:820px){
+    .igrid,.modes,.statrow{grid-template-columns:repeat(2,1fr)}
+    .hero .seal{width:72px;height:72px}
+  }
+  @media(max-width:520px){
+    body{font-size:17px}
+    .igrid{grid-template-columns:1fr}
+    .divider .rule{max-width:120px}
+  }
+  @media(prefers-reduced-motion:reduce){
+    *{animation:none!important;transition:none!important}
+    .reveal{opacity:1;transform:none}
+  }
+
+  /* ---------- game audio layer ---------- */
+  body.is-loading{overflow:hidden}
+  .loading-screen{position:fixed;inset:0;z-index:500;display:grid;place-items:center;
+    background:
+      radial-gradient(circle at 50% 26%,rgba(195,155,69,.24),transparent 34%),
+      radial-gradient(circle at 50% 74%,rgba(125,29,17,.3),transparent 44%),
+      linear-gradient(160deg,#1c130a 0%,#2b1109 55%,#0e0805 100%);
+    color:var(--paper);transition:opacity .75s ease,visibility .75s ease}
+  .loading-screen.hide{opacity:0;visibility:hidden;pointer-events:none}
+  .loader-card{position:relative;width:min(520px,calc(100% - 40px));text-align:center;
+    padding:2.6rem 1.9rem;
+    border:1px solid rgba(195,155,69,.5);background:rgba(14,8,5,.62);
+    box-shadow:inset 0 0 0 5px rgba(195,155,69,.12),0 26px 70px rgba(0,0,0,.5);
+    backdrop-filter:blur(10px)}
+  .loader-card::before,.loader-card::after{content:'';position:absolute;width:26px;height:26px;
+    border:2px solid var(--gold-lt)}
+  .loader-card::before{top:10px;left:10px;border-right:none;border-bottom:none}
+  .loader-card::after{bottom:10px;right:10px;border-left:none;border-top:none}
+  .loader-ey{font-family:var(--sans);font-size:.68rem;letter-spacing:.24em;text-transform:uppercase;
+    color:var(--gold-pale);margin-bottom:.9rem}
+  .loader-title{font-family:var(--serif);font-weight:800;font-size:clamp(1.9rem,7vw,3rem);
+    line-height:1.05;color:var(--paper);margin:.2rem 0 .7rem}
+  .loader-sub{font-family:var(--antique);font-style:italic;color:rgba(243,232,207,.82);
+    font-size:1.12rem;line-height:1.5;max-width:34ch;margin:0 auto 1.4rem}
+  .game-lute{width:142px;height:142px;margin:0 auto 1rem;filter:drop-shadow(0 0 22px rgba(195,155,69,.3));
+    animation:luteFloat 2.7s ease-in-out infinite}
+  .game-lute .ring{transform-origin:50% 50%;animation:luteRing 4.8s linear infinite}
+  .game-lute .string{animation:stringGlow 1.4s ease-in-out infinite alternate}
+  .loading-track{height:8px;border:1px solid rgba(195,155,69,.5);padding:1px;margin:1.2rem auto 1.3rem;
+    background:rgba(243,232,207,.06);max-width:300px}
+  .loading-track span{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--lac-br),var(--gold-lt));
+    transition:width 1.2s cubic-bezier(.2,.8,.2,1)}
+  .loader-btn{box-shadow:0 12px 32px rgba(125,29,17,.36)}
+  .loader-note{font-family:var(--sans);font-size:.72rem;color:rgba(243,232,207,.55);margin-top:.9rem;line-height:1.5}
+  .sound-panel{margin:1.4rem 0 0;display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap;
+    padding:1rem 1.1rem;border:1px solid rgba(195,155,69,.34);background:rgba(243,232,207,.05);color:rgba(243,232,207,.82)}
+  .sound-panel .mix-status{font-family:var(--sans);font-size:.78rem;letter-spacing:.08em;text-transform:uppercase}
+  .sound-mini{font-family:var(--sans);font-weight:600;font-size:.75rem;letter-spacing:.04em;border:1px solid rgba(195,155,69,.5);
+    color:var(--gold-pale);background:transparent;padding:.65rem 1rem;cursor:pointer;transition:.3s}
+  .sound-mini:hover{background:var(--gold-lt);color:var(--ink)}
+  .icard.sound-item{position:relative;cursor:pointer;user-select:none;outline:none;min-height:100%;border:1px solid transparent}
+  .icard.sound-item::after{content:'CLICK ĐỂ PHÁT ÂM';position:absolute;right:.85rem;top:.85rem;
+    font-family:var(--sans);font-size:.56rem;letter-spacing:.12em;color:rgba(195,155,69,.6);opacity:.75}
+  .icard.sound-item:hover,.icard.sound-item:focus-visible{background:rgba(43,17,9,.7);box-shadow:inset 0 0 0 1px rgba(195,155,69,.42)}
+  .icard.sound-item[data-active="true"]{background:
+      radial-gradient(circle at 50% 32%,rgba(195,155,69,.2),transparent 40%),
+      rgba(43,17,9,.9);box-shadow:inset 0 0 0 1px rgba(195,155,69,.78),0 0 35px rgba(195,155,69,.14)}
+  .icard.sound-item[data-active="true"]::after{content:'ĐANG PHÁT';color:var(--gold-pale);opacity:1}
+  .icard.sound-item[data-active="true"] .draw{animation:itemPulse 1.3s ease-in-out infinite}
+  .icard.sound-item:active{transform:scale(.985)}
+  @keyframes luteFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
+  @keyframes luteRing{to{transform:rotate(360deg)}}
+  @keyframes stringGlow{from{opacity:.55}to{opacity:1}}
+  @keyframes itemPulse{0%,100%{filter:drop-shadow(0 0 0 rgba(195,155,69,0))}50%{filter:drop-shadow(0 0 15px rgba(195,155,69,.4))}}
+</style>
+</head>
+<body class="is-loading">
+<div class="progress" id="progress"></div>
+
+<!-- ================= LOADING GAME SCREEN ================= -->
+<div class="loading-screen" id="loadingScreen" aria-live="polite">
+  <div class="loader-card">
+    <div class="loader-ey">Trải nghiệm tương tác · Đờn ca tài tử</div>
+    <svg class="game-lute" viewBox="0 0 160 160" role="img" aria-label="Biểu tượng cây đàn">
+      <circle class="ring" cx="80" cy="80" r="66" fill="none" stroke="rgba(195,155,69,.28)" stroke-width="1" stroke-dasharray="6 10"/>
+      <ellipse cx="80" cy="104" rx="30" ry="34" fill="rgba(176,132,47,.11)" stroke="#c39b45" stroke-width="3"/>
+      <path d="M80 18 C76 45 77 67 80 79" fill="none" stroke="#c39b45" stroke-width="5" stroke-linecap="round"/>
+      <path d="M62 31 C75 22 87 22 99 31" fill="none" stroke="#9d2f1c" stroke-width="3" stroke-linecap="round"/>
+      <circle cx="69" cy="32" r="4" fill="#c39b45"/><circle cx="92" cy="32" r="4" fill="#c39b45"/>
+      <line class="string" x1="72" y1="78" x2="72" y2="130" stroke="#f3e8cf" stroke-width="1.4" opacity=".75"/>
+      <line class="string" x1="88" y1="78" x2="88" y2="130" stroke="#f3e8cf" stroke-width="1.4" opacity=".75"/>
+      <path d="M59 104 Q80 92 101 104" fill="none" stroke="#7d1d11" stroke-width="2"/>
+    </svg>
+    <div class="loader-title">So dây trước giờ đờn</div>
+    <p class="loader-sub">Màn hình mở đầu có tiếng đàn. Sau khi vào trang, hãy click từng nhạc cụ như nhặt vật phẩm trong game.</p>
+    <div class="loading-track"><span id="loadingBar"></span></div>
+    <button class="btn solid loader-btn" id="startExperience" type="button">Bắt đầu trải nghiệm</button>
+    <div class="loader-note">Trình duyệt cần một lần bấm để mở âm thanh.</div>
+  </div>
+</div>
+
+
+<!-- ================= HERO ================= -->
+<header class="hero">
+  <div class="media">
+    <img src="media/images/hero.png" alt="Chiếu đờn ca tài tử bên sông về đêm">
+  </div>
+  <div class="watermark"></div>
+  <div class="grad"></div>
+  <div class="frame-lines"></div>
+  <div class="hero-inner">
+    <div class="wrap">
+      <div class="ey">Di sản sống · Đồng bằng sông Cửu Long</div>
+      <div class="ornabreak"></div>
+      <h1>Tiếng đờn <em>giữa cánh đồng</em></h1>
+      <p class="dek">Vì sao thứ âm nhạc này chỉ có thể sinh ra ở miền Tây? Đờn ca tài tử không chỉ là một dòng nhạc — nó là cách một vùng đất mới trả lời câu hỏi: làm sao để không quên mình là ai.</p>
+      <div class="by">Một câu chuyện di sản · Đọc ~ 9 phút</div>
+    </div>
+  </div>
+  <svg class="seal" viewBox="0 0 100 100" role="img" aria-label="Con dấu triện">
+    <rect x="4" y="4" width="92" height="92" rx="6" fill="none" stroke="#9d2f1c" stroke-width="3"/>
+    <rect x="12" y="12" width="76" height="76" rx="3" fill="none" stroke="#9d2f1c" stroke-width="1.5"/>
+    <path d="M50 22c8 8 8 20 0 28-8-8-8-20 0-28z" fill="none" stroke="#9d2f1c" stroke-width="2.4"/>
+    <path d="M30 52c8-4 32-4 40 0-8 4-32 4-40 0z" fill="none" stroke="#9d2f1c" stroke-width="2.4"/>
+    <circle cx="50" cy="52" r="4" fill="#9d2f1c"/>
+    <path d="M34 74h32" stroke="#9d2f1c" stroke-width="2.4"/>
+  </svg>
+</header>
+<!-- ================= MỞ: CẢNH ================= -->
+<section class="section tight">
+  <div class="wrap">
+    <p class="lede drop reveal">Trời sập tối trên một con kênh ở miền Tây. Ngày làm ruộng đã xong. Không có sân khấu, không vé, không đèn màu — chỉ một manh chiếu trải trước hiên, một bình trà, và dăm người ngồi xuống. Ai đó so dây cây đàn kìm. Rồi tiếng đờn cất lên.</p>
+    <p class="reveal">Đó là <strong>đờn ca tài tử</strong>. Nhìn thoáng qua, đây tưởng như một buổi hát dân gian bình thường. Nhưng chỉ cần dừng lại và hỏi một câu — <em>tại sao</em> thứ âm nhạc này lại sinh ra ở đây, giữa đồng bằng sông nước, chứ không phải nơi nào khác — ta sẽ chạm vào cả câu chuyện của một vùng đất.</p>
+  </div>
+
+  <figure class="wide reveal">
+    <div class="frame">
+      <img src="media/images/mo-dau.jpg" alt="Buổi đờn ca tài tử về đêm bên sông">
+    </div>
+    <figcaption><b>Chiếu đờn bên sông.</b> Cảnh một buổi đờn ca tài tử về đêm — ánh đèn, mặt nước, người ngồi quây quần.</figcaption>
+  </figure>
+</section>
+
+<div class="divider" aria-hidden="true">
+  <div class="rule"></div>
+  <svg class="coin" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2"><circle cx="24" cy="24" r="20"/><circle cx="24" cy="24" r="13"/><rect x="18" y="18" width="12" height="12"/></svg>
+  <div class="rule r"></div>
+</div>
+
+<!-- ================= 1. VÙNG ĐẤT ================= -->
+<section class="section">
+  <div class="wrap">
+    <div class="kicker reveal"><span class="num">01</span> Vùng đất sinh ra nó</div>
+    <h2 class="reveal">Đất mở sau cùng, <em>và những người mang theo ký ức</em></h2>
+    <p class="reveal">Đồng bằng sông Cửu Long là vùng đất được người Việt khai mở <strong>sau cùng</strong> trong hành trình Nam tiến. Đất thấp, mênh mông sông rạch, phù sa và cá tôm — nhưng cũng là nơi xa quê cha đất tổ nhất. Những lưu dân từ miền Trung xuôi về đây mang theo cày cuốc để mưu sinh, và cả một thứ không cân đo được: <em>ký ức về nơi họ đã rời đi</em>.</p>
+    <p class="reveal">Trong hành trang tinh thần ấy có âm nhạc. Sau biến cố kinh đô Huế thất thủ năm 1885, nhiều nhạc quan triều Nguyễn theo phong trào Cần Vương lần vào phương Nam, đem theo vốn nhã nhạc cung đình và ca Huế. Dọc đường, tiếng đàn của họ dừng chân ở Quảng Bình, Quảng Trị, Quảng Nam — thấm thêm âm hưởng xứ Quảng trước khi vào tới đồng bằng.</p>
+    <div class="pull reveal">
+      <p>Người ta không mang được ngôi làng theo mình. Nhưng người ta mang được một điệu nhạc — và điệu nhạc ấy trở thành ngôi làng.</p>
+    </div>
+    <p class="reveal">Đây là điều mấu chốt: đờn ca tài tử không tự nhiên mà có. Nó là <strong>ca Huế theo chân người rời khỏi chốn cung đình</strong>, đặt vào tay những con người vừa khai hoang vừa nhớ nhà. Và một khi đã xa cung vua, thứ âm nhạc bác học ấy buộc phải đổi thay để sống được trên đất mới.</p>
+  </div>
+</section>
+
+<!-- ================= 2. TẠI SAO NGẪU HỨNG ================= -->
+<section class="section tight">
+  <div class="wrap">
+    <div class="kicker reveal"><span class="num">02</span> Tính cách làm nên âm thanh</div>
+    <h2 class="reveal">Vì sao tài tử <em>không bao giờ đàn giống nhau hai lần</em></h2>
+    <p class="reveal">Người miền Tây có tiếng phóng khoáng, cởi mở, <em>trọng nghĩa khinh tài</em>. Đó không chỉ là chuyện tính cách — nó chảy thẳng vào cách âm nhạc cất lên. Ở cung đình, nhạc phải đúng khuôn phép. Nhưng trên chiếu đờn miền Tây, người đàn không giữ y nguyên như thầy dạy: họ <strong>thêm thắt, tô điểm, biến hóa</strong> theo cảm xúc của chính đêm hôm đó.</p>
+    <p class="reveal">Giới tài tử gọi cái khung giai điệu gốc là <strong>"lòng bản"</strong> — phần lõi cố định của mỗi bài. Người chơi phải thuộc lòng bản, rồi từ đó tự do "ứng tấu, ứng tác": nhấn, rung, luyến, láy theo ngón đàn riêng của mình. Vậy nên cùng một bài, cùng một lòng bản, hai người đàn ra hai tiếng lòng khác nhau — và cùng một người, đêm nay với đêm mai cũng chẳng bao giờ giống hệt.</p>
+    <div class="pull reveal">
+      <p>Chữ "tài tử" không có nghĩa là nghiệp dư. Nó có nghĩa là <em>người có tài</em> — người đàn ca không phải để kiếm sống, mà để tri âm.</p>
+      <cite>Nghĩa gốc của chữ "tài tử"</cite>
+    </div>
+    <p class="reveal">Chính vì thế, đờn ca tài tử vừa <strong>bác học vừa bình dân</strong>: bác học ở gốc gác cung đình và ở số năm khổ luyện (một người học đàn cần ít nhất ba năm chỉ để nắm các kỹ thuật cơ bản), bình dân ở chỗ nó diễn ra ngay trên hiên nhà, không rào ngăn giữa người đàn và người nghe.</p>
+  </div>
+
+  <figure class="wide reveal videoslot">
+    <div class="frame">
+      <iframe src="https://www.youtube.com/embed/SmK5_NKNYSE" title="Đờn ca tài tử — một ngón đàn ngẫu hứng" style="width:100%;height:100%;border:0;background:#160f07" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+    </div>
+    <figcaption><b>Một ngón đàn ngẫu hứng.</b> Cận cảnh nghệ nhân "rao" đàn và luyến láy — nghe thấy sự khác biệt của lối ứng tấu.</figcaption>
+  </figure>
+</section>
+<!-- ================= 3. TỨ TUYỆT (nhạc cụ) ================= -->
+<section class="instruments">
+  <div class="wide">
+    <div class="kicker reveal"><span class="num">03</span> Bốn cây đàn</div>
+    <h2 class="reveal">Tứ tuyệt — <em>bốn giọng nói của một cuộc trò chuyện</em></h2>
+    <p class="intro reveal">Ban tài tử cổ điển rất gọn: bốn nhạc công, bốn cây đàn — gọi là <em>tứ tuyệt</em>. Chúng không hòa cùng một bè, mà đối đáp, nhường nhau, ứng tấu như bốn người bạn đang chuyện trò trong đêm.</p>
+    <div class="sound-panel reveal">
+      <div class="mix-status" id="mixStatus">Chưa có nhạc cụ nào vang lên · Click một cây đàn để phát âm thanh</div>
+      <button class="sound-mini" id="resetMix" type="button">Dừng âm thanh</button>
+    </div>
+    <div class="igrid">
+      <div class="icard reveal sound-item" role="button" tabindex="0" data-instrument="kim" data-active="false" aria-pressed="false">
+        <div class="draw"><svg width="60" height="90" viewBox="0 0 60 90" fill="none"><ellipse cx="30" cy="60" rx="18" ry="20" stroke="#b0842f" stroke-width="2"/><line x1="30" y1="8" x2="30" y2="40" stroke="#c9a154" stroke-width="2.2"/><circle cx="25" cy="12" r="2" fill="#c9a154"/><circle cx="35" cy="12" r="2" fill="#c9a154"/><g class="strings"><line x1="26" y1="42" x2="26" y2="78" stroke="#c9a154" stroke-width="1.1"/><line x1="34" y1="42" x2="34" y2="78" stroke="#c9a154" stroke-width="1.1"/></g></svg></div>
+        <h3>Đàn kìm</h3>
+        <div class="role">Nguyệt cầm · trụ cột</div>
+        <p>Đàn hai dây, thân tròn như vầng trăng. Giữ nhịp, dẫn dắt cả ban. Khi buồn, chỉ riêng cây kìm cũng đủ giãi bày một nỗi lòng.</p>
+      </div>
+      <div class="icard reveal sound-item" role="button" tabindex="0" data-instrument="co" data-active="false" aria-pressed="false">
+        <div class="draw"><svg width="60" height="90" viewBox="0 0 60 90" fill="none"><ellipse cx="30" cy="68" rx="11" ry="12" stroke="#b0842f" stroke-width="2"/><line x1="30" y1="12" x2="30" y2="56" stroke="#c9a154" stroke-width="2.2"/><path d="M18 50 Q30 42 42 50" stroke="#c9a154" stroke-width="1.4" fill="none"/><line x1="22" y1="16" x2="14" y2="10" stroke="#c9a154" stroke-width="1.8"/><line x1="38" y1="16" x2="46" y2="10" stroke="#c9a154" stroke-width="1.8"/></svg></div>
+        <h3>Đàn cò</h3>
+        <div class="role">Đàn nhị · giọng người</div>
+        <p>Hai dây kéo bằng vĩ. Tiếng ngân gần với giọng hát nhất trong bộ tứ — nó khóc được, cười được, than được.</p>
+      </div>
+      <div class="icard reveal sound-item" role="button" tabindex="0" data-instrument="tranh" data-active="false" aria-pressed="false">
+        <div class="draw"><svg width="80" height="90" viewBox="0 0 80 90" fill="none"><path d="M12 66 L62 30 L68 38 L18 74 Z" stroke="#b0842f" stroke-width="2" fill="none"/><g class="strings"><line x1="18" y1="60" x2="60" y2="34" stroke="#c9a154" stroke-width=".9"/><line x1="22" y1="65" x2="64" y2="39" stroke="#c9a154" stroke-width=".9"/><line x1="26" y1="70" x2="68" y2="44" stroke="#c9a154" stroke-width=".9"/></g></svg></div>
+        <h3>Đàn tranh</h3>
+        <div class="role">Thập lục · mười sáu dây</div>
+        <p>Tiếng gảy réo rắt như nước chảy qua ghềnh. Chính ở đây, ngón nhấn nhá, luyến láy làm nên cái "mùi" rất riêng của Nam Bộ.</p>
+      </div>
+      <div class="icard reveal sound-item" role="button" tabindex="0" data-instrument="bau" data-active="false" aria-pressed="false">
+        <div class="draw"><svg width="80" height="90" viewBox="0 0 80 90" fill="none"><path d="M12 54 Q40 48 68 54" stroke="#b0842f" stroke-width="2" fill="none"/><line x1="12" y1="54" x2="12" y2="68" stroke="#b0842f" stroke-width="2"/><path d="M68 54 Q76 36 66 24" stroke="#c9a154" stroke-width="1.8"/><g class="strings"><line x1="12" y1="61" x2="66" y2="61" stroke="#c9a154" stroke-width="1.2"/></g></svg></div>
+        <h3>Đàn bầu</h3>
+        <div class="role">Độc huyền · một dây</div>
+        <p>Chỉ một sợi dây mà gợi cả trời tâm sự. Vì khó chơi, đàn bầu hay được thay bằng ghi-ta phím lõm — cây đàn phương Tây được người Việt khoét lõm mặt phím để nhấn nhá được như đàn dân tộc.</p>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- ================= 4. 20 BÀI TỔ ================= -->
+<section class="section">
+  <div class="wrap">
+    <div class="kicker reveal"><span class="num">04</span> Bộ khung của di sản</div>
+    <h2 class="reveal">Hai mươi bài tổ — <em>bốn mùa của lòng người</em></h2>
+    <p class="reveal">Kho tàng tài tử mênh mông, nhưng tất cả khởi đi từ <strong>20 bài bản tổ</strong> — được giới nghề gọi trang trọng là "nhị thập huyền tổ bản". Người xưa chia chúng thành bốn hệ điệu, và gắn mỗi hệ với một mùa. Không phải mùa của thời tiết, mà mùa của cảm xúc.</p>
+  </div>
+  <div class="wide">
+    <div class="modes">
+      <div class="mcard b reveal"><div class="season">Xuân · vui tươi</div><h4>Sáu bài Bắc</h4><div class="cnt">6 bài · phóng khoáng</div><p>Rộn ràng, sáng sủa. Lưu Thủy, Phú Lục, Xuân Tình… như nắng đầu năm trải trên đồng.</p></div>
+      <div class="mcard h reveal"><div class="season">Hạ · trang nghiêm</div><h4>Bảy bài Hạ</h4><div class="cnt">7 bài · uy nghi</div><p>Đĩnh đạc, dùng trong tế lễ. Xàng Xê, Ngũ Đối, Long Đăng… giữ lại cốt cách nhạc lễ.</p></div>
+      <div class="mcard n reveal"><div class="season">Thu · man mác</div><h4>Ba bài Nam</h4><div class="cnt">3 bài · thanh thoát</div><p>Nam Xuân, Nam Ai, Nam Đảo. An nhàn mà thoáng buồn, như heo may trên mặt sông.</p></div>
+      <div class="mcard o reveal"><div class="season">Đông · bi ai</div><h4>Bốn bài Oán</h4><div class="cnt">4 bài · ai oán</div><p>Tứ Đại Oán, Giang Nam, Phụng Hoàng, Phụng Cầu. Đỉnh cao của nỗi niềm.</p></div>
+    </div>
+  </div>
+  <div class="wrap">
+    <p class="reveal">Điều đáng chú ý: <strong>điệu Oán là sáng tạo thuần Nam Bộ</strong> — không đem về từ Huế, mà do chính những con người sống trên đất mới nghĩ ra. Nếu bài Bắc là ký ức đem theo từ cố hương, thì bài Oán là tiếng nói của riêng vùng đất này. Đó là khoảnh khắc đờn ca tài tử thôi là một tiếng vọng của Huế, và trở thành <em>tiếng nói của chính mình</em>.</p>
+    <p class="reveal">Về sau, bên cạnh 20 bài tổ, người ta thêm những "bài bản vắn" và đặc biệt là <strong>Vọng cổ</strong> — bắt nguồn từ <em>Dạ cổ hoài lang</em> của Cao Văn Lầu ở Bạc Liêu, viết từ tâm sự người vợ nhớ chồng lúc đêm về. Bản nhạc ấy sau này trở thành linh hồn của cả sân khấu cải lương.</p>
+  </div>
+
+  <figure class="wide reveal">
+    <div class="frame tall" style="aspect-ratio:21/9">
+      <img src="media/images/da-co-hoai-lang.png" alt="Tư liệu bản Dạ cổ hoài lang - Cao Văn Lầu, Bạc Liêu">
+    </div>
+    <figcaption><b>Bản Dạ cổ hoài lang.</b> Tư liệu về nhạc phẩm của Cao Văn Lầu ở Bạc Liêu — cội nguồn của vọng cổ.</figcaption>
+  </figure>
+</section>
+
+<div class="divider" aria-hidden="true">
+  <div class="rule"></div>
+  <svg class="coin" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2"><circle cx="24" cy="24" r="20"/><circle cx="24" cy="24" r="13"/><rect x="18" y="18" width="12" height="12"/></svg>
+  <div class="rule r"></div>
+</div>
+
+<!-- ================= 5. NHÂN VẬT ================= -->
+<section class="section tight">
+  <div class="wrap">
+    <div class="kicker reveal"><span class="num">05</span> Những người giữ lửa</div>
+    <h2 class="reveal">Di sản không sống trong tủ kính. <em>Nó sống trong một con người.</em></h2>
+    <p class="reveal">Đằng sau mỗi chiếu đờn là một con người cụ thể: người nghệ nhân đã dành cả đời cho tiếng đàn, người thầy truyền nghề cho lớp trẻ, hay một gia đình mà ba bốn thế hệ cùng biết đàn ca. Đây là nơi câu chuyện chạm vào người xem mạnh nhất — không phải qua số liệu, mà qua một gương mặt.</p>
+  </div>
+
+  <figure class="wide reveal">
+    <div class="frame tall">
+      <img src="media/images/chan-dung.png" alt="Chân dung nghệ nhân đờn ca tài tử">
+    </div>
+    <figcaption><b>Chân dung nghệ nhân.</b> Người giữ tiếng đàn — trái tim của câu chuyện di sản.</figcaption>
+  </figure>
+
+  <div class="wrap">
+    <div class="pull reveal">
+      <p>"…" — để trống một câu nói thật của nghệ nhân bạn phỏng vấn. Một câu giản dị về lý do họ vẫn còn đàn.</p>
+      <cite>Tên nghệ nhân · Địa phương</cite>
+    </div>
+    <p class="reveal">Khi làm cho một địa phương cụ thể, phần này nên là <strong>một nhân vật thật, có tên, có gương mặt, có giọng nói</strong>. Người xem sẽ quên số liệu, nhưng nhớ một con người.</p>
+  </div>
+</section>
+<!-- ================= 6. QUY MÔ ================= -->
+<section class="section tight">
+  <div class="wrap">
+    <div class="kicker reveal"><span class="num">06</span> Tầm vóc một di sản</div>
+    <h2 class="reveal">Một dòng nhạc, <em>cả một đồng bằng</em></h2>
+    <p class="reveal">Khác với nhiều di sản chỉ gói trong một vùng nhỏ hoặc diễn theo mùa, đờn ca tài tử trải rộng khắp phương Nam và vang lên quanh năm — trong đám giỗ, tiệc cưới, buổi họp mặt, hay chỉ một đêm rảnh bên bờ sông.</p>
+  </div>
+  <div class="wide">
+    <div class="statrow">
+      <div class="statc reveal"><div class="n">2013</div><div class="l">UNESCO ghi danh Di sản văn hóa phi vật thể đại diện của nhân loại (5/12)</div></div>
+      <div class="statc reveal"><div class="n">21</div><div class="l">Tỉnh, thành phía Nam cùng nắm giữ di sản trong hồ sơ công nhận</div></div>
+      <div class="statc reveal"><div class="n">20</div><div class="l">Bài bản tổ làm nền móng cho toàn bộ kho tàng tài tử</div></div>
+      <div class="statc reveal"><div class="n">100+</div><div class="l">Năm hình thành, trao truyền qua nhiều thế hệ trong một gia đình</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 7. DÒNG THỜI GIAN ================= -->
+<section class="section tight">
+  <div class="wrap">
+    <div class="kicker reveal"><span class="num">07</span> Một trăm năm</div>
+    <h2 class="reveal">Từ ca Huế <em>đến bờ kênh miền Tây</em></h2>
+    <div class="tl">
+      <div class="tlrow reveal"><div class="yr">1885</div><h4>Kinh đô Huế thất thủ</h4><p>Nhạc quan triều Nguyễn theo phong trào Cần Vương lần vào phương Nam, đem theo vốn ca Huế và nhã nhạc cung đình về vùng đất mới.</p></div>
+      <div class="tlrow reveal"><div class="yr">Cuối TK 19</div><h4>Ba miền, ba ông tổ</h4><p>Ca Huế gặp đất mới, định hình thành tài tử qua ba nhóm: miền Đông do Nguyễn Quang Đại (cụ Ba Đợi), miền Tây do Trần Quang Quờn, Bạc Liêu – Rạch Giá do Nhạc Khị. Điệu Oán ra đời — sáng tạo thuần Nam Bộ.</p></div>
+      <div class="tlrow reveal"><div class="yr">1919</div><h4>Dạ cổ hoài lang</h4><p>Cao Văn Lầu viết bản nhạc từ nỗi nhớ chồng của người vợ. Từ đó nảy sinh vọng cổ, rồi cải lương — đưa tiếng đờn tài tử lên tầm ảnh hưởng mới.</p></div>
+      <div class="tlrow reveal"><div class="yr">2013</div><h4>Thế giới lắng nghe</h4><p>Ngày 5/12 tại Baku (Azerbaijan), UNESCO ghi danh đờn ca tài tử — di sản phi vật thể thứ 8 của Việt Nam ở tầm quốc tế.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= CLOSING ================= -->
+<section class="closing">
+  <div class="wrap">
+    <svg class="coin-top" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="24" cy="24" r="20"/><circle cx="24" cy="24" r="13"/><rect x="18" y="18" width="12" height="12"/></svg>
+    <h2 class="reveal">Một di sản chỉ sống khi <em>còn người ngồi xuống nghe</em></h2>
+    <p class="reveal">Đờn ca tài tử không nằm sau lớp kính bảo tàng. Nó nằm ở buổi chiều có người chịu bắc ghế, so dây và cất tiếng. Mỗi địa phương giữ được một chiếu đờn là giữ được một mạch sống của cả vùng đất — và giữ cho con cháu một lối để biết mình từ đâu tới.</p>
+    <div class="cta reveal">
+      <button class="btn solid" onclick="window.sendPrompt && window.sendPrompt('Giúp tôi phác thảo kế hoạch bảo tồn và quảng bá một di sản văn hoá địa phương theo hướng landing page kể chuyện như thế này')">Xây câu chuyện cho di sản của bạn</button>
+      <button class="btn" onclick="document.querySelector('.hero').scrollIntoView()">Đọc lại từ đầu</button>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wide">
+    <span>Câu chuyện di sản · Bản mẫu landing page</span>
+    <svg class="seal-sm" viewBox="0 0 100 100" fill="none" stroke="currentColor" aria-hidden="true"><rect x="6" y="6" width="88" height="88" rx="6" stroke-width="3"/><path d="M50 26c7 7 7 18 0 25-7-7-7-18 0-25z" stroke-width="2.2"/><path d="M32 54c7-3 29-3 36 0-7 3-29 3-36 0z" stroke-width="2.2"/></svg>
+    <span>Nguồn: Cục Di sản văn hóa · hồ sơ UNESCO 2013 · Bách khoa toàn thư VN</span>
+  </div>
+</footer>
+
+<script>
+  // ================================================================
+  // AUDIO CONFIG — bỏ file vào thư mục "audio" (cùng chỗ với file HTML này).
+  // Đổi tên/định dạng file thì sửa lại đường dẫn bên dưới cho khớp.
+  // Nếu để trống hoặc thiếu file, trang tự tạo tiếng đàn mô phỏng bằng Web Audio API.
+  // ================================================================
+  const AUDIO_SRC={
+    intro:"audio/intro.mp3",
+    kim:"audio/dan-kim.mp3",
+    co:"audio/dan-co.mp3",
+    tranh:"audio/dan-tranh.mp3",
+    bau:"audio/dan-bau.mp3"
+  };
+
+  const prog=document.getElementById('progress');
+  addEventListener('scroll',()=>{const h=document.documentElement.scrollHeight-innerHeight;
+    prog.style.width=(scrollY/h*100)+'%'},{passive:true});
+
+  const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.12});
+  document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+
+  const AudioGame=(()=>{
+    let ctx,master,delay,entered=false,current=null,currentBus=null;
+    const loops={};
+    const liveAudio={};
+    const names={kim:'Đàn kìm',co:'Đàn cò',tranh:'Đàn tranh',bau:'Đàn bầu'};
+
+    function init(){
+      if(ctx) return;
+      const AC=window.AudioContext||window.webkitAudioContext;
+      ctx=new AC();
+      master=ctx.createGain();
+      master.gain.value=.72;
+      delay=ctx.createDelay();
+      delay.delayTime.value=.18;
+      const fb=ctx.createGain();fb.gain.value=.18;
+      const wet=ctx.createGain();wet.gain.value=.16;
+      delay.connect(fb);fb.connect(delay);delay.connect(wet);wet.connect(master);
+      master.connect(ctx.destination);
+    }
+    async function unlock(){init(); if(ctx.state==='suspended') await ctx.resume();}
+    function envGain(start,gain,dur,attack=.018,release=.16){
+      const g=ctx.createGain();
+      g.gain.setValueAtTime(0,start);
+      g.gain.linearRampToValueAtTime(gain,start+attack);
+      g.gain.exponentialRampToValueAtTime(.0001,start+Math.max(attack+.03,dur-release));
+      g.gain.exponentialRampToValueAtTime(.00001,start+dur);
+      return g;
+    }
+    function createInstrumentBus(){
+      const bus=ctx.createGain();
+      bus.gain.setValueAtTime(1,ctx.currentTime);
+      bus.connect(master);bus.connect(delay);
+      return bus;
+    }
+    function fadeAndDropBus(bus){
+      if(!bus) return;
+      const t=ctx.currentTime;
+      try{
+        bus.gain.cancelScheduledValues(t);
+        bus.gain.setValueAtTime(Math.max(bus.gain.value,.0001),t);
+        bus.gain.exponentialRampToValueAtTime(.0001,t+.08);
+        setTimeout(()=>{try{bus.disconnect()}catch(e){}},130);
+      }catch(e){}
+    }
+    function connectVoice(node,g){
+      node.connect(g);
+      g.connect(currentBus||master);
+    }
+    function pluck(freq,start,dur=.6,gain=.13,type='triangle'){
+      const o=ctx.createOscillator();
+      const f=ctx.createBiquadFilter();
+      const g=envGain(start,gain,dur,.01,.12);
+      o.type=type;o.frequency.setValueAtTime(freq,start);
+      o.detune.setValueAtTime((Math.random()*8)-4,start);
+      f.type='lowpass';f.frequency.setValueAtTime(2100,start);f.Q.value=.7;
+      o.connect(f);connectVoice(f,g);o.start(start);o.stop(start+dur+.04);
+    }
+    function bowed(freq,start,dur=.85,gain=.07){
+      const o=ctx.createOscillator();
+      const lfo=ctx.createOscillator();
+      const lfoGain=ctx.createGain();
+      const f=ctx.createBiquadFilter();
+      const g=envGain(start,gain,dur,.12,.22);
+      o.type='sawtooth';o.frequency.setValueAtTime(freq,start);
+      lfo.type='sine';lfo.frequency.value=5.2;lfoGain.gain.value=7;
+      lfo.connect(lfoGain);lfoGain.connect(o.frequency);
+      f.type='bandpass';f.frequency.value=920;f.Q.value=1.2;
+      o.connect(f);connectVoice(f,g);o.start(start);lfo.start(start);o.stop(start+dur+.05);lfo.stop(start+dur+.05);
+    }
+    function glide(from,to,start,dur=1.15,gain=.08){
+      const o=ctx.createOscillator();
+      const f=ctx.createBiquadFilter();
+      const g=envGain(start,gain,dur,.04,.3);
+      o.type='sine';o.frequency.setValueAtTime(from,start);
+      o.frequency.exponentialRampToValueAtTime(to,start+dur*.72);
+      f.type='lowpass';f.frequency.value=1500;f.Q.value=.4;
+      o.connect(f);connectVoice(f,g);o.start(start);o.stop(start+dur+.05);
+    }
+    function clickBlip(){
+      const oldBus=currentBus;
+      currentBus=null;
+      const t=ctx.currentTime;
+      pluck(880,t,.16,.045,'sine');pluck(1320,t+.055,.13,.03,'sine');
+      currentBus=oldBus;
+    }
+    function phraseKim(){const t=ctx.currentTime;[196,246.94,220,174.61,196].forEach((n,i)=>pluck(n,t+i*.34,.54,.11,'triangle'))}
+    function phraseCo(){const t=ctx.currentTime;[293.66,329.63,293.66,261.63].forEach((n,i)=>bowed(n,t+i*.48,.74,.052))}
+    function phraseTranh(){const t=ctx.currentTime;[392,440,493.88,523.25,493.88,440].forEach((n,i)=>pluck(n,t+i*.18,.42,.075,'sine'))}
+    function phraseBau(){const t=ctx.currentTime;glide(196,246.94,t,.95,.075);glide(246.94,220,t+1.08,1.05,.068)}
+    const synth={kim:{fn:phraseKim,ms:2200},co:{fn:phraseCo,ms:2450},tranh:{fn:phraseTranh,ms:2100},bau:{fn:phraseBau,ms:2600}};
+
+    function stopCurrent(){
+      Object.values(loops).forEach(id=>clearInterval(id));
+      Object.keys(loops).forEach(k=>delete loops[k]);
+      Object.values(liveAudio).forEach(a=>{a.pause();try{a.currentTime=0}catch(e){}});
+      Object.keys(liveAudio).forEach(k=>delete liveAudio[k]);
+      fadeAndDropBus(currentBus);
+      currentBus=null;
+      current=null;
+      document.querySelectorAll('[data-instrument]').forEach(el=>{el.dataset.active='false';el.setAttribute('aria-pressed','false')});
+    }
+    function startRealAudio(name){
+      if(!AUDIO_SRC[name]) return false;
+      const a=new Audio(AUDIO_SRC[name]);
+      a.loop=name!=='intro';
+      a.volume=name==='intro'?.58:.46;
+      a.preload='auto';
+      liveAudio[name]=a;
+      a.onerror=()=>{delete liveAudio[name];startSynthLoop(name)};
+      a.play().catch(()=>{delete liveAudio[name];startSynthLoop(name)});
+      return true;
+    }
+    function startSynthLoop(name){
+      if(!synth[name]||loops[name]) return;
+      synth[name].fn();
+      loops[name]=setInterval(()=>synth[name].fn(),synth[name].ms);
+    }
+    function playInstrument(name){
+      if(!ctx) init();
+      clickBlip();
+      stopCurrent();
+      current=name;
+      currentBus=createInstrumentBus();
+      if(!startRealAudio(name)) startSynthLoop(name);
+      document.querySelectorAll(`[data-instrument="${name}"]`).forEach(el=>{
+        el.dataset.active='true';el.setAttribute('aria-pressed','true');
+      });
+      updateStatus();
+    }
+    function reset(){
+      stopCurrent();
+      updateStatus();
+    }
+    function updateStatus(){
+      const st=document.getElementById('mixStatus');
+      if(!st) return;
+      st.textContent=current?`Đang phát: ${names[current]}`:'Chưa có nhạc cụ nào vang lên · Click một cây đàn để phát âm thanh';
+    }
+    function playIntro(){
+      if(startRealAudio('intro')) return;
+      const introBus=createInstrumentBus();
+      const oldBus=currentBus;
+      currentBus=introBus;
+      const t=ctx.currentTime;
+      [196,246.94,293.66,246.94,220,196,174.61,196].forEach((n,i)=>pluck(n,t+i*.22,.55,.105,i%2?'triangle':'sine'));
+      glide(196,246.94,t+1.05,1.35,.055);
+      [392,440,493.88].forEach((n,i)=>pluck(n,t+1.85+i*.15,.36,.055,'sine'));
+      currentBus=oldBus;
+      setTimeout(()=>fadeAndDropBus(introBus),4300);
+    }
+    async function enter(){
+      if(entered) return; entered=true;
+      await unlock();
+      playIntro();
+      document.getElementById('loadingBar').style.width='100%';
+      setTimeout(()=>{
+        document.getElementById('loadingScreen').classList.add('hide');
+        document.body.classList.remove('is-loading');
+      },1250);
+    }
+    return{unlock,enter,playInstrument,reset};
+  })();
+
+  document.getElementById('startExperience')?.addEventListener('click',AudioGame.enter);
+  document.getElementById('resetMix')?.addEventListener('click',async()=>{await AudioGame.unlock();AudioGame.reset();});
+  document.querySelectorAll('[data-instrument]').forEach(card=>{
+    const run=async()=>{await AudioGame.unlock();AudioGame.playInstrument(card.dataset.instrument)};
+    card.addEventListener('click',run);
+    card.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();run();}});
+  });
+</script>
+</body>
+</html>
+
